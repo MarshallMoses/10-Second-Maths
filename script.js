@@ -57,10 +57,8 @@ var updateScore = function (n) {
 //check and update high score function
 var updateHighScore = function () {
 
-  if (currentScore => highScore) {
     highScore = currentScore;
     $(".highScore").text(currentScore);
-  }
 
 }
 
@@ -94,6 +92,24 @@ var setTimer = function() {
 
 }
 
+var endGame = function () {
+
+  if (currentScore > highScore) {
+
+    alert("You set a new record! You scored " + currentScore + "!");
+    updateHighScore();
+
+  } else {
+
+    alert("Game Over. You Scored " + currentScore + " points!");
+
+  }
+
+  setTimer();
+  updateScore(-currentScore);
+
+}
+
 //function to start game timer, 
 var startGame = function () {
 
@@ -105,11 +121,9 @@ var startGame = function () {
     
       if(timeLeft === 0) {
     
+        endGame();
         clearInterval(interval);
         interval = undefined;
-        setTimer();
-        updateHighScore();
-        updateScore(-currentScore);
     
       }
     
