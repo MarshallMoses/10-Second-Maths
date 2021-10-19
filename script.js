@@ -107,6 +107,7 @@ var endGame = function () {
 
   setTimer();
   updateScore(-currentScore);
+  $("#answer").val("");
 
 }
 
